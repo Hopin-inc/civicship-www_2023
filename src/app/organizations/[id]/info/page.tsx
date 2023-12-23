@@ -33,7 +33,7 @@ const OrganizationDetailInfo = async () => {
               <p className="text-sm text-muted-foreground">活動分野</p>
             </dt>
             <dd>
-              <ul className="flex gap-2">
+              <ul className="flex flex-wrap gap-2">
                 { association.targets?.map((target, index) => (
                   <li className="px-3 py-0.5 rounded-full bg-accent" key={ index }>{ target }</li>
                 )) }
@@ -158,9 +158,5 @@ const OrganizationDetailInfo = async () => {
     );
   }
 };
-
-type Props = React.InputHTMLAttributes<HTMLDivElement> & {
-  id: string;
-}
 
 export default OrganizationDetailInfo;

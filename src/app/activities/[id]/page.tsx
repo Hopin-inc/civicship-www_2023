@@ -48,7 +48,7 @@ const ActivityDetail = async () => {
       <Thumbnails thumbnails={ activity.thumbnails }/>
       <div className="flex gap-8 items-start">
         <div className="flex flex-col gap-16 flex-grow">
-          <Summary/>
+          <Summary activity={ activity }/>
           <Organization association={ association }/>
           { trends && <Trends id={ association.id } trends={ trends }/> }
           <Records activities={ records } total={ totalRecords }/>

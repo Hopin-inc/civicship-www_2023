@@ -1,8 +1,8 @@
 import { Calendar, Clock, User } from "lucide-react";
 import Image from "next/image";
-import { getOrganization, getOrganizationDetail } from "@/api";
-import { displayNumber } from "@/lib/display";
+import { getOrganization } from "@/api";
 import { convertH2HM } from "@/lib/date";
+import { displayNumber } from "@/lib/display";
 
 type Props = React.InputHTMLAttributes<HTMLDivElement> & {
   id: string;
@@ -61,9 +61,9 @@ const OrganizationInfo = async ({ id }: Props) => {
           </li>
         </ul>
         <div className="flex flex-wrap self-stretch py-2 justify-start items-center gap-2">
-          <div className="justify-start items-center flex">
+          <div className="justify-start items-center flex pl-2">
             { association.memberAvatars.map((avatar, index) => (
-              <Image src={ avatar } alt="参加者" width="40" height="40" className="rounded-full" key={ index }/>
+              <Image src={ avatar } alt="参加者" width="40" height="40" className="rounded-full -ml-2" key={ index }/>
             )) }
           </div>
           <p className="text-sm">

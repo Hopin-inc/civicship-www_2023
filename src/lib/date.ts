@@ -20,7 +20,7 @@ export const convertDatetime = (startAt: string, finishAt?: string): string => {
   } else if (dayjs(startAt).isSame(finishAt, "date")) {
     return `${ formatDate(startAt, "YYYY年M月D日(ddd) HH:mm") }~${ formatDate(finishAt, "HH:mm") }`;
   } else {
-    return `${ formatDate(startAt, "YYYY年M月D日(ddd) HH:mm") }~${ formatDate(startAt, "YYYY年M月D日(ddd) HH:mm") }`;
+    return `${ formatDate(startAt, "YYYY年M月D日(ddd) HH:mm") }~${ formatDate(finishAt, "YYYY年M月D日(ddd) HH:mm") }`;
   }
 };
 

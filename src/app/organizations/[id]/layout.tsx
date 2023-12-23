@@ -21,7 +21,6 @@ const OrganizationLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const locations = pathname.split("/");
   const id = locations[2];
   const tab = locations[3];
-  console.log(pathname, tab);
   return (
     <div className="w-full max-w-[1160px] px-10 pt-[80px] pb-[160px] flex gap-10 items-start">
       <aside className="min-w-[400px] w-[400px] sticky top-[120px]">
