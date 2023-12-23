@@ -1,10 +1,24 @@
-import Header from "@/components/layout/header";
+import Contact from "@/app/_components/Contact";
+import FirstView from "@/app/_components/FirstView";
+import Now from "@/app/_components/Now";
+import Organizations from "@/app/_components/Organizations";
+import Plans from "@/app/_components/Plans";
+import Records from "@/app/_components/Records";
+import Recruitment from "@/app/_components/Recruitment";
+import "@/app/page.scss";
 
-export default function Home() {
-  return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="flex flex-col items-center justify-between p-24"></main>
+const Home = () => (
+  <>
+    <FirstView/>
+    <div className="flex flex-col w-full max-w-[960px] px-10 pb-20 gap-20 home">
+      <Now/>
+      <Organizations/>
+      <Plans/>
+      <Records/>
+      <Recruitment/>
+      <Contact/>
     </div>
-  );
-}
+  </>
+);
+
+export default Home;

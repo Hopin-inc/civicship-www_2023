@@ -1,0 +1,29 @@
+@use "sass:math";
+
+.embla {
+  overflow: visible;
+}
+
+.embla__container {
+  display: grid;
+  grid-auto-flow: column;
+
+  @for $i from 2 through 6 {
+    $cols: math.div($i, 2);
+    $colsStr: if($cols - floor($cols) == 0, $cols, floor($cols) + "\\." + ($cols - floor($cols)) * 10);
+    &.cols-#{$colsStr} {
+      grid-auto-columns: math.div(1, $cols) * 100%;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    $width: $i * 80;
+    &.width-#{$width} {
+      grid-auto-columns: #{$width}px;
+    }
+  }
+}
+
+.embla__slide {
+  min-width: 0;
+}
