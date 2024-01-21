@@ -2,8 +2,8 @@ import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { recruitmentOfTrialPartner } from "@/constants/url";
+import { cn } from "@/lib/utils";
 
 const Recruitment = () => (
   <section id="recruitment" className="flex flex-col py-4">

@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "develop": "civicship-app-dev",
+    "production": "civicship-prd"
+  }
+}

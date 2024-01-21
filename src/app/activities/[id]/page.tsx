@@ -2,7 +2,7 @@ import { ExternalLink } from "lucide-react";
 import { headers } from "next/headers";
 import Link from "next/link";
 import {
-  getActivityInfo,
+  getActivityInfo, getOrganization,
   getOrganizationDetail,
   getOrganizationTrends,
   getPlans,
@@ -30,16 +30,18 @@ const ActivityDetail = async () => {
   const organizationId = activity?.associationId;
   const [
     association,
+    associationInfo,
     trends,
     { data: plans, total: totalPlans },
     { data: records, total: totalRecords },
   ] = await Promise.all([
     getOrganizationDetail(organizationId),
+    getOrganization(organizationId),
     getOrganizationTrends(organizationId),
     getPlans(organizationId),
     getRecords(organizationId),
   ]);
-  if (!association || !trends) {
+  if (!association || !associationInfo || !trends) {
     return;
   }
 
@@ -59,7 +61,9 @@ const ActivityDetail = async () => {
             話を聞きたい
             <ExternalLink size="16" className="ml-1"/>
           </Link>
-          <RecordSummary/>
+          <RecordSummary participants={ associationInfo.engagement.participants }
+                         activityCount={ associationInfo.engagement.activityCount }
+                         activityHours={ associationInfo.engagement.activityHour }/>
         </aside>
       </div>
       <Plans activities={ plans } total={ totalPlans } className="mt-20"/>

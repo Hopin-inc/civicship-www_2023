@@ -1,15 +1,17 @@
 import { httpsCallable } from "firebase/functions";
+import { IS_DEV } from "@/constants/env";
 import { functions } from "@/lib/firebase";
 import {
   ActivityTrendOverview,
   AssociationDetail,
+  AssociationMembers,
   AssociationOverview,
   DataWithTotal, GoingActivityDetail,
   PastActivityDetail,
   PlanOverview,
 } from "@/types/api";
 
-const PRINT_RESULT: boolean = true;
+const PRINT_RESULT: boolean = IS_DEV;
 
 export const getTotalHours = async (): Promise<number | undefined> => {
   try {
@@ -205,5 +207,29 @@ export const getOrganizationTrends = async (id: string): Promise<ActivityTrendOv
       params: { id },
     });
     return null;
+  }
+}
+
+export const getOrganizationMembers = async (id: string): Promise<AssociationMembers> => {
+  try {
+    const callable = httpsCallable<string, AssociationMembers>(functions, "web-getOrganizationMembers");
+    const result = await callable(id);
+    if (PRINT_RESULT) {
+      console.log({
+        function: "getOrganizationMembers",
+        params: { id },
+        result: result.data,
+      });
+    }
+    return result.data;
+  } catch (e) {
+    console.error(e, {
+      function: "getOrganizationMembers",
+      params: { id },
+    });
+    return {
+      members: [],
+      total: 0,
+    };
   }
 }

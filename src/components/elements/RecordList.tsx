@@ -28,9 +28,9 @@ const RecordList = ({ activities, showMore, className }: Props) => (
             <div className="self-stretch flex-col justify-start items-start gap-4 flex">
               { participantAvatars.length > 0 && (
                 <div className="self-stretch justify-start items-center gap-2 inline-flex">
-                  <ul className="justify-start items-center flex">
+                  <ul className="justify-start items-center flex ml-4">
                     { participantAvatars.map((avatar, idx) => (
-                      <li key={ idx }>
+                      <li key={ idx } className="-ml-4">
                         <Image src={ avatar } alt="参加者" width="80" height="80" className="rounded-full"/>
                       </li>
                     )) }

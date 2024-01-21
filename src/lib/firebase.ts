@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { connectFunctionsEmulator, getFunctions } from 'firebase/functions';
+import { IS_DEV } from "@/constants/env";
 
 const app = initializeApp({
   projectId: process.env.PROJECT_ID,
@@ -7,4 +8,6 @@ const app = initializeApp({
   authDomain: process.env.AUTH_DOMAIN,
 });
 export const functions = getFunctions(app, "asia-northeast2");
-connectFunctionsEmulator(functions, "127.0.0.1", 5001);
+if (IS_DEV) {
+  connectFunctionsEmulator(functions, "127.0.0.1", 5001);
+}

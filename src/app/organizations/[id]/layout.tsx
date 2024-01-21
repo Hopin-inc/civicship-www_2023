@@ -11,8 +11,8 @@ type Tab = {
 
 const tabs: Tab[] = [
   { value: "info", label: "ホーム" },
-  { value: "trends", label: "これまでの傾向・活動" },
-  // { value: "members", label: "メンバー" },
+  // { value: "trends", label: "これまでの傾向・活動" },
+  { value: "members", label: "メンバー" },
   { value: "plans", label: "活動予定" },
 ];
 

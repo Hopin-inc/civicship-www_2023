@@ -1,10 +1,9 @@
-import { ArrowRightCircle, Calendar, Link as LinkIcon, MapPin, ShieldCheck, Tag } from "lucide-react";
+import { Calendar, Link as LinkIcon, MapPin, ShieldCheck, Tag } from "lucide-react";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { getOrganizationDetail, getOrganizationTrends, getPlans, getRecords } from "@/api";
 import PlanList from "@/components/elements/PlanList";
 import RecordList from "@/components/elements/RecordList";
-import { buttonVariants } from "@/components/ui/button";
 import { formatDate } from "@/lib/date";
 import { displayNumber } from "@/lib/display";
 
@@ -76,10 +75,10 @@ const OrganizationDetailInfo = async () => {
         <section className="w-full">
           <div className="flex justify-between items-center">
             <h2>これまでの傾向</h2>
-            <Link href="./trends" className={ buttonVariants({ variant: "ghost" }) }>
-              くわしく見る
-              <ArrowRightCircle size="16" className="ml-1"/>
-            </Link>
+            {/*<Link href="./trends" className={ buttonVariants({ variant: "ghost" }) }>*/}
+            {/*  くわしく見る*/}
+            {/*  <ArrowRightCircle size="16" className="ml-1"/>*/}
+            {/*</Link>*/}
           </div>
           <ul className="mt-4 grid grid-cols-2 gap-4">
             <li className="p-6 bg-white rounded-2xl">

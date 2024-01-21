@@ -1,6 +1,5 @@
 import Contact from "@/app/_components/Contact";
 import FirstView from "@/app/_components/FirstView";
-import Now from "@/app/_components/Now";
 import Organizations from "@/app/_components/Organizations";
 import Plans from "@/app/_components/Plans";
 import Records from "@/app/_components/Records";
@@ -11,7 +10,7 @@ const Home = () => (
   <>
     <FirstView/>
     <div className="flex flex-col w-full max-w-[960px] px-10 pb-20 gap-20 home">
-      <Now/>
+      {/*<Now/>*/}
       <Organizations/>
       <Plans/>
       <Records/>

@@ -1,8 +1,8 @@
-import { Calendar, Timer, User } from "lucide-react";
+import { Calendar, User } from "lucide-react";
 import Link from "next/link";
 import { getOrganizations } from "@/api";
-import { convertH2HM, formatDate } from "@/lib/date";
-import { displayNumber, joinTexts } from "@/lib/display";
+import { formatDate } from "@/lib/date";
+import { joinTexts } from "@/lib/display";
 
 const Organizations = async () => {
   const organizations = await getOrganizations();
@@ -14,7 +14,7 @@ const Organizations = async () => {
       </p>
       <ul className="w-full mt-6 grid grid-cols-2 gap-6">
         { organizations.map(({ engagement, ...organization }, index) => {
-          const [hours, minutes] = convertH2HM(engagement.activityHour);
+          // const [hours, minutes] = convertH2HM(engagement.activityHour);
           return (
             <li className="bg-white rounded-lg" key={ index }>
               <Link href={ `/organizations/${ organization.id }` }
@@ -50,18 +50,18 @@ const Organizations = async () => {
                       回
                     </p>
                   </li>
-                  <li className="self-stretch justify-between items-center inline-flex">
-                    <div className="justify-center items-start gap-2 flex">
-                      <Timer/>
-                      <p>活動時間</p>
-                    </div>
-                    <p className="text-right text-sm font-medium">
-                      <span className="text-2xl font-semibold">{ displayNumber(hours) }</span>
-                      時間
-                      <span className="text-2xl font-semibold">{ displayNumber(minutes) }</span>
-                      分
-                    </p>
-                  </li>
+                  {/*<li className="self-stretch justify-between items-center inline-flex">*/}
+                  {/*  <div className="justify-center items-start gap-2 flex">*/}
+                  {/*    <Timer/>*/}
+                  {/*    <p>活動時間</p>*/}
+                  {/*  </div>*/}
+                  {/*  <p className="text-right text-sm font-medium">*/}
+                  {/*    <span className="text-2xl font-semibold">{ displayNumber(hours) }</span>*/}
+                  {/*    時間*/}
+                  {/*    <span className="text-2xl font-semibold">{ displayNumber(minutes) }</span>*/}
+                  {/*    分*/}
+                  {/*  </p>*/}
+                  {/*</li>*/}
                 </ul>
               </Link>
             </li>

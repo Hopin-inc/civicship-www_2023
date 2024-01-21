@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { companyWebsite, privacyPolicy, termsOfUse } from "@/constants/url";
+import { cn } from "@/lib/utils";
 
 const Footer: React.FC = () => {
   return (

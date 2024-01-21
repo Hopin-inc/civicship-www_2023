@@ -12,30 +12,11 @@ export type AssociationOverview = {
   totalMembers: number;
 }
 
-export type UserActivityTrendOverview = {
-  timing: ActivityTrend;
-  frequency: ActivityTrend;
-  location: ActivityTrend;
-}
-
 export type ActivityTrendOverview = {
   timing: ActivityTrend;
   frequency: ActivityTrend;
   location: ActivityTrend;
   age: ActivityTrend;
-}
-
-export type UserActivityTrendDetail = {
-  timing: ActivityTiming;
-  frequency: ActivityFrequency;
-  location: ActivityLocation;
-}
-
-export type ActivityTrendDetail = {
-  timing: ActivityTiming;
-  frequency: ActivityFrequency;
-  location: ActivityLocation;
-  age: ParticipantAge;
 }
 
 export type DataWithTotal<T> = {
@@ -50,15 +31,6 @@ export type PlanOverview = {
   endsAt: string;
   address: string;
   association: AvatarWithName;
-}
-
-export type PlanDetail = {
-  thumbnails: string[];
-  startsAt: string;
-  endsAt: string;
-  registrants: AvatarWithName[];
-  location: ActivityLocation[];
-  age: ParticipantAge;
 }
 
 export type PastActivityDetail = {
@@ -84,16 +56,6 @@ export type GoingActivityDetail = {
   background?: string;
 }
 
-export type ActivityOverview = {
-  id: string;
-  participants: AvatarWithName[];
-  remainingParticipants: number;
-  address: string;
-  enteredAt: string;
-  exitAt?: string;
-  association: AvatarWithName;
-}
-
 export type AssociationDetail = {
   id: string;
   logo: string;
@@ -108,10 +70,6 @@ export type AssociationDetail = {
   authorizedBy?: string;
 }
 
-export type MemberEngagement = {
-  member: AvatarWithName;
-}
-
 export type PromotionBanner = {
   members: AvatarWithName[];
   name: string;
@@ -124,39 +82,6 @@ export type AssociationActivityEngagement = {
   activityHour: number;
 }
 
-type ActivityFrequency = {
-  almostEveryDay: number;
-  fourOrFiveDaysWeekly: number;
-  twoOrThreeDaysWeekly: number;
-  onceAWeek: number;
-  biweekly: number;
-  onceAMonth: number;
-  everyTwoOrThreeMonths: number;
-  almostOnceAYear: number;
-}
-
-type ActivityLocation = {
-  stateAndCity: string;
-  ratio: number;
-}
-
-type ActivityTiming = [
-  TimesOfDay,
-  TimesOfDay,
-  TimesOfDay,
-  TimesOfDay,
-  TimesOfDay,
-  TimesOfDay,
-  TimesOfDay,
-]
-
-export type TimesOfDay = {
-  morning: number;
-  afternoon: number;
-  evening: number;
-  night: number;
-}
-
 type ActivityTrend = {
   value: string;
   percentage: number | null;
@@ -167,13 +92,13 @@ type AvatarWithName = {
   avatar: string;
 }
 
-type ParticipantAge = {
-  underTeens: number;
-  twenties: number;
-  thirties: number;
-  forties: number;
-  fifties: number;
-  sixties: number;
-  seventies: number;
-  overEighties: number;
+export type AssociationMembers = {
+  members: MemberWithEngagement[];
+  total: number;
+}
+
+type MemberWithEngagement = AvatarWithName & {
+  lastActivityDate: string | null;
+  activityCount: number;
+  activityHours: number;
 }
