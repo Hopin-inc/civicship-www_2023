@@ -33,15 +33,20 @@ export type PlanOverview = {
   association: AvatarWithName;
 }
 
-export type PastActivityDetail = {
+export type Duration = {
+  startsAt: string;
+  endsAt?: string;
+}
+
+export type ActivityDetail = {
   id: string;
   associationId: string;
   thumbnails: string[];
-  startsAt: string;
-  endsAt: string;
+  plan?: Duration;
+  actual?: Duration;
   participantAvatars: string[];
   totalParticipants: number;
-  address: string;
+  address?: string;
 }
 
 export type GoingActivityDetail = {

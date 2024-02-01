@@ -11,18 +11,19 @@ const OrganizationDetailMembers = async () => {
   const id = locations[2];
   const { members } = await getOrganizationMembers(id);
   return (
-    <ul className="grid gap-6">
+    <ul className="grid grid-cols-2 gap-6">
       { members.map((m, index) => {
         // const [hours, minutes] = convertH2HM(m.activityHours);
         return (
-          <li className="w-1/2 p-8 bg-white rounded-lg flex flex-col justify-start items-center" key={ index }>
-            <Image src="https://via.placeholder.com/80x80" width="80" height="80" alt="アイコン"
-                   className="rounded-full"/>
+          <li className="p-8 bg-white rounded-lg flex flex-col justify-start items-center" key={ index }>
+            <Image src={ m.avatar } width="80" height="80" alt="アイコン" className="rounded-full"/>
             <div className="py-4 flex flex-col justify-center items-center gap-2">
-              <p className="text-center text-xl font-semibold">name</p>
-              <p className="text-center text-muted-foreground text-sm font-medium">
-                最終活動日 { displayLastActivity(m.lastActivityDate) }
-              </p>
+              <p className="text-center text-xl font-semibold">{ m.name }</p>
+              { m.lastActivityDate && (
+                <p className="text-center text-muted-foreground text-sm font-medium">
+                  最終活動日: { displayLastActivity(m.lastActivityDate) }
+                </p>
+              ) }
             </div>
             <ul className="w-full mt-2 bg-white rounded-2xl flex flex-col gap-2">
               <li className="self-stretch justify-between items-center inline-flex">
@@ -55,13 +56,9 @@ const OrganizationDetailMembers = async () => {
   );
 };
 
-const displayLastActivity = (datetime: string | null) => {
-  if (datetime) {
-    const differenceInDays = dayjs().diff(dayjs(datetime), "d");
-    return `${ differenceInDays }日前`;
-  } else {
-    return "—";
-  }
+const displayLastActivity = (datetime: string) => {
+  const differenceInDays = dayjs().diff(dayjs(datetime), "d");
+  return `${ differenceInDays }日前`;
 }
 
 export default OrganizationDetailMembers;

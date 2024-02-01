@@ -8,6 +8,17 @@
     ],
     "frameworksBackend": {
       "region": "asia-east1"
-    }
+    },
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0, must-revalidate"
+          }
+        ]
+      }
+    ]
   }
 }

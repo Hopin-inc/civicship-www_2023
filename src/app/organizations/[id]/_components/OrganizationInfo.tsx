@@ -1,7 +1,6 @@
-import { Calendar, Clock, User } from "lucide-react";
+import { Calendar, User } from "lucide-react";
 import Image from "next/image";
 import { getOrganization } from "@/api";
-import { convertH2HM } from "@/lib/date";
 import { displayNumber } from "@/lib/display";
 
 type Props = React.InputHTMLAttributes<HTMLDivElement> & {
@@ -11,7 +10,7 @@ type Props = React.InputHTMLAttributes<HTMLDivElement> & {
 const OrganizationInfo = async ({ id }: Props) => {
   const association = await getOrganization(id);
   if (association) {
-    const [hours, minutes] = convertH2HM(association.engagement.activityHour);
+    // const [hours, minutes] = convertH2HM(association.engagement.activityHour);
     return (
       <div className="w-full p-10 bg-white rounded-lg flex flex-col justify-start items-center">
         <div className="self-stretch h-[120px] bg-image-contain"
@@ -24,9 +23,11 @@ const OrganizationInfo = async ({ id }: Props) => {
             { association.suffix && <br/> }
             { association.suffix && association.suffix }
           </h3>
-          <p>{ association.description }</p>
+          { association.name && (
+            <p className="mt-2">{ association.description }</p>
+          ) }
         </div>
-        <ul className="w-full mt-2 bg-white rounded-2xl flex flex-col gap-2">
+        <ul className="w-full mt-4 bg-white rounded-2xl flex flex-col gap-2">
           <li className="self-stretch justify-between items-center inline-flex">
             <div className="justify-start items-center gap-2 flex">
               <User size="16"/>
@@ -47,18 +48,18 @@ const OrganizationInfo = async ({ id }: Props) => {
               回
             </p>
           </li>
-          <li className="self-stretch justify-between items-center inline-flex">
-            <div className="justify-start items-center gap-2 flex">
-              <Clock size="16"/>
-              <p className="text-sm">活動時間</p>
-            </div>
-            <p className="text-right text-sm font-medium">
-              <span className="text-xl font-semibold">{ displayNumber(hours) }</span>
-              時間
-              <span className="text-xl font-semibold">{ displayNumber(minutes) }</span>
-              分
-            </p>
-          </li>
+          {/*<li className="self-stretch justify-between items-center inline-flex">*/}
+          {/*  <div className="justify-start items-center gap-2 flex">*/}
+          {/*    <Clock size="16"/>*/}
+          {/*    <p className="text-sm">活動時間</p>*/}
+          {/*  </div>*/}
+          {/*  <p className="text-right text-sm font-medium">*/}
+          {/*    <span className="text-xl font-semibold">{ displayNumber(hours) }</span>*/}
+          {/*    時間*/}
+          {/*    <span className="text-xl font-semibold">{ displayNumber(minutes) }</span>*/}
+          {/*    分*/}
+          {/*  </p>*/}
+          {/*</li>*/}
         </ul>
         <div className="flex flex-wrap self-stretch py-2 justify-start items-center gap-2">
           <div className="justify-start items-center flex pl-2">

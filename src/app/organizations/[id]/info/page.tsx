@@ -82,7 +82,7 @@ const OrganizationDetailInfo = async () => {
           </div>
           <ul className="mt-4 grid grid-cols-2 gap-4">
             <li className="p-6 bg-white rounded-2xl">
-              <h3 className="text-sm text-muted-foreground">活動曜日・時間帯</h3>
+              <h3 className="text-sm text-muted-foreground">活動曜日</h3>
               <div className="mt-2">
                 { trends.timing.value && (
                   <p className="text-sm font-medium">

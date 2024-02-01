@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { ExternalLink } from "lucide-react";
 import { headers } from "next/headers";
 import Link from "next/link";
@@ -27,6 +28,7 @@ const ActivityDetail = async () => {
   if (!activity) {
     return;
   }
+  const isPlan = !!activity.plan?.startsAt && dayjs().isBefore(dayjs(activity.plan.startsAt));
   const organizationId = activity?.associationId;
   const [
     association,
@@ -50,7 +52,7 @@ const ActivityDetail = async () => {
       <Thumbnails thumbnails={ activity.thumbnails }/>
       <div className="flex gap-8 items-start">
         <div className="flex flex-col gap-16 flex-grow">
-          <Summary activity={ activity }/>
+          <Summary activity={ activity } isPlan={ isPlan }/>
           <Organization association={ association }/>
           { trends && <Trends id={ association.id } trends={ trends }/> }
           <Records activities={ records } total={ totalRecords }/>

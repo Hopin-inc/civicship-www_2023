@@ -9,5 +9,6 @@ const app = initializeApp({
 });
 export const functions = getFunctions(app, "asia-northeast2");
 if (IS_DEV) {
+  console.log("Running on dev");
   connectFunctionsEmulator(functions, "127.0.0.1", 5001);
 }

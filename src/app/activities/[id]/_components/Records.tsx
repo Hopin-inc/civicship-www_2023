@@ -1,8 +1,8 @@
 import RecordList from "@/components/elements/RecordList";
-import { PastActivityDetail } from "@/types/api";
+import { ActivityDetail } from "@/types/api";
 
 type Props = React.InputHTMLAttributes<HTMLDivElement> & {
-  activities: PastActivityDetail[];
+  activities: ActivityDetail[];
   total: number;
 }
 

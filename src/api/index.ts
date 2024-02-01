@@ -7,7 +7,7 @@ import {
   AssociationMembers,
   AssociationOverview,
   DataWithTotal, GoingActivityDetail,
-  PastActivityDetail,
+  ActivityDetail,
   PlanOverview,
 } from "@/types/api";
 
@@ -123,9 +123,9 @@ export const getPlans = async (organizationId?: string): Promise<DataWithTotal<P
   }
 }
 
-export const getRecords = async (organizationId?: string): Promise<DataWithTotal<PastActivityDetail>> => {
+export const getRecords = async (organizationId?: string): Promise<DataWithTotal<ActivityDetail>> => {
   try {
-    const callable = httpsCallable<string | undefined, DataWithTotal<PastActivityDetail>>(functions, "web-getRecords");
+    const callable = httpsCallable<string | undefined, DataWithTotal<ActivityDetail>>(functions, "web-getRecords");
     const result = await callable(organizationId);
     if (PRINT_RESULT) {
       console.log({
@@ -147,9 +147,9 @@ export const getRecords = async (organizationId?: string): Promise<DataWithTotal
   }
 }
 
-export const getActivityInfo = async (id: string): Promise<PastActivityDetail | null> => {
+export const getActivityInfo = async (id: string): Promise<ActivityDetail | null> => {
   try {
-    const callable = httpsCallable<string, PastActivityDetail | null>(functions, "web-getActivityInfo");
+    const callable = httpsCallable<string, ActivityDetail | null>(functions, "web-getActivityInfo");
     const result = await callable(id);
     if (PRINT_RESULT) {
       console.log({
