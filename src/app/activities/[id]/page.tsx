@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { ExternalLink } from "lucide-react";
+import { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
 import {
@@ -18,13 +19,24 @@ import Thumbnails from "@/app/activities/[id]/_components/Thumbnails";
 import Trends from "@/app/activities/[id]/_components/Trends";
 import { buttonVariants } from "@/components/ui/button";
 import { applyForm } from "@/constants/url";
+import { formatDate } from "@/lib/date";
 import { cn } from "@/lib/utils";
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const activity = await getActivityInfo(params.id);
+  const title = activity?.plan?.startsAt
+    ? `${ formatDate(activity?.plan?.startsAt, "YYYY年M月D日") }の活動 | civicship`
+    : "活動 | civicship";
+  return {
+    title,
+  };
+}
 
 const ActivityDetail = async () => {
   const pathname = headers().get("x-url") || "";
   const locations = pathname.split("/");
   const id = locations[2];
-  const activity = await getActivityInfo(id);
+  const activity = await (getActivityInfo(id));
   if (!activity) {
     return;
   }
@@ -64,11 +76,13 @@ const ActivityDetail = async () => {
             <ExternalLink size="16" className="ml-1"/>
           </Link>
           <RecordSummary participants={ associationInfo.engagement.participants }
-                         activityCount={ associationInfo.engagement.activityCount }
+                         activityCount={ records.length }
                          activityHours={ associationInfo.engagement.activityHour }/>
         </aside>
       </div>
-      <Plans activities={ plans } total={ totalPlans } className="mt-20"/>
+      { plans.length > 0 && (
+        <Plans activities={ plans } total={ totalPlans } className="mt-20"/>
+      ) }
     </div>
   )
 };

@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
           </ul>
           <div className="flex flex-col gap-2 mt-8">
             <Link href="/" className="hover-link">
-              <Image className="relative" alt="civicship" src="/logo.svg" width="144" height="28"/>
+              <Image className="relative" alt="civicship" src="/images/logo.svg" width="144" height="28"/>
             </Link>
             <p className="text-muted-foreground text-sm">© 2023-2024 Hopin Inc.</p>
           </div>

@@ -146,13 +146,15 @@ const OrganizationDetailInfo = async () => {
           </div>
           <RecordList activities={ records } className="mt-4"/>
         </section>
-        <section className="w-full">
-          <div className="flex items-center gap-4">
-            <h2>活動予定</h2>
-            <p className="text-sm text-muted-foreground font-medium">{ totalPlans }件</p>
-          </div>
-          <PlanList activities={ plans } className="mt-4"/>
-        </section>
+        { plans.length > 0 && (
+          <section className="w-full">
+            <div className="flex items-center gap-4">
+              <h2>活動予定</h2>
+              <p className="text-sm text-muted-foreground font-medium">{ totalPlans }件</p>
+            </div>
+            <PlanList activities={ plans } className="mt-4"/>
+          </section>
+        ) }
       </div>
     );
   }

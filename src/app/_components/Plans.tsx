@@ -4,7 +4,7 @@ import PlanCarousel from "@/components/elements/PlanCarousel";
 
 const Plans = async () => {
   const { total, data } = await getPlans();
-  return (
+  return total > 0 && (
     <section id="plans" className="flex flex-col py-4">
       <div className="flex flex-row items-center gap-3">
         <h2>活動予定</h2>

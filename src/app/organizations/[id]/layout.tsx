@@ -1,6 +1,8 @@
+import { Metadata } from "next";
 import { headers } from "next/headers";
 import Link from "next/link";
 import { PropsWithChildren } from "react";
+import { getOrganization } from "@/api";
 import OrganizationInfo from "@/app/organizations/[id]/_components/OrganizationInfo";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -15,6 +17,22 @@ const tabs: Tab[] = [
   { value: "members", label: "メンバー" },
   { value: "plans", label: "活動予定" },
 ];
+
+export async function generateMetadata(): Promise<Metadata> {
+  const pathname = headers().get("x-url") || "";
+  const locations = pathname.split("/");
+  const id = locations[2];
+  const tab = locations[3];
+  const association = await getOrganization(id);
+  const tabItem = tabs.find(t => t.value === tab);
+  const title = tab === "info" || !tabItem
+    ? `${ association?.name } | civicship`
+    : `${ tabItem?.label } - ${ association?.name } | civicship`;
+  return {
+    title,
+    description: association?.description,
+  };
+}
 
 const OrganizationLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const pathname = headers().get("x-url") || "";

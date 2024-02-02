@@ -13,7 +13,7 @@ const Recruitment = () => (
       ボランティアの活動を自動で記録して共助を可視化することで、市民活動のリソース調達を支援します。
     </p>
     <div className="w-full h-[506px] mt-6 relative">
-      <Image src="/concept.png" alt="コンセプト画像" width="900" height="506"
+      <Image src="/images/concept.png" alt="コンセプト画像" width="900" height="506"
              className="w-full bg-zinc-900 bg-opacity-10 rounded-lg"/>
       <Link href={ recruitmentOfTrialPartner } target="_blank"
             className={ cn(
