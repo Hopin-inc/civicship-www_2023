@@ -26,8 +26,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const association = await getOrganization(id);
   const tabItem = tabs.find(t => t.value === tab);
   const title = tab === "info" || !tabItem
-    ? `${ association?.name } | civicship`
-    : `${ tabItem?.label } - ${ association?.name } | civicship`;
+    ? `${ association?.name }`
+    : `${ tabItem?.label } - ${ association?.name }`;
   return {
     title,
     description: association?.description,

@@ -25,8 +25,8 @@ import { cn } from "@/lib/utils";
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const activity = await getActivityInfo(params.id);
   const title = activity?.plan?.startsAt
-    ? `${ formatDate(activity?.plan?.startsAt, "YYYY年M月D日") }の活動 | civicship`
-    : "活動 | civicship";
+    ? `${ formatDate(activity?.plan?.startsAt, "YYYY年M月D日") }の活動`
+    : "活動";
   return {
     title,
   };

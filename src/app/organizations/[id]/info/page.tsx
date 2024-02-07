@@ -32,11 +32,16 @@ const OrganizationDetailInfo = async () => {
               <p className="text-sm text-muted-foreground">活動分野</p>
             </dt>
             <dd>
-              <ul className="flex flex-wrap gap-2">
-                { association.targets?.map((target, index) => (
-                  <li className="px-3 py-0.5 rounded-full bg-accent" key={ index }>{ target }</li>
-                )) }
-              </ul>
+              { association.targets?.length
+                ? (
+                  <ul className="flex flex-wrap gap-2">
+                    { association.targets?.map((target, index) => (
+                      <li className="px-3 py-0.5 rounded-full bg-accent" key={ index }>{ target }</li>
+                    )) }
+                  </ul>
+                )
+                : <p>—</p>
+              }
             </dd>
             <dt>
               <Calendar size="16" className="text-muted-foreground"/>
@@ -75,10 +80,10 @@ const OrganizationDetailInfo = async () => {
         <section className="w-full">
           <div className="flex justify-between items-center">
             <h2>これまでの傾向</h2>
-            {/*<Link href="./trends" className={ buttonVariants({ variant: "ghost" }) }>*/}
-            {/*  くわしく見る*/}
-            {/*  <ArrowRightCircle size="16" className="ml-1"/>*/}
-            {/*</Link>*/}
+            {/*<Link href="./trends" className={ buttonVariants({ variant: "ghost" }) }>*/ }
+            {/*  くわしく見る*/ }
+            {/*  <ArrowRightCircle size="16" className="ml-1"/>*/ }
+            {/*</Link>*/ }
           </div>
           <ul className="mt-4 grid grid-cols-2 gap-4">
             <li className="p-6 bg-white rounded-2xl">
