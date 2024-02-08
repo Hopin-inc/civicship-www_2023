@@ -12,13 +12,13 @@ const Recruitment = () => (
       共助の循環を促進する、ボランティアの活動日数・時間を自動で記録できる『civicship』の実証実験パートナーを募集しています。
       ボランティアの活動を自動で記録して共助を可視化することで、市民活動のリソース調達を支援します。
     </p>
-    <div className="w-full h-[506px] mt-6 relative">
+    <div className="w-full mt-6 relative">
       <Image src="/images/concept.png" alt="コンセプト画像" width="900" height="506"
              className="w-full bg-zinc-900 bg-opacity-10 rounded-lg"/>
       <Link href={ recruitmentOfTrialPartner } target="_blank"
             className={ cn(
               buttonVariants({ variant: "default" }),
-              "px-6 right-12 bottom-8 absolute rounded-full shadow inline-flex gap-2",
+              "px-6 right-4 md:right-12 bottom-4 md:bottom-8 absolute rounded-full shadow inline-flex gap-2",
             ) }
       >
         詳しくはこちらへ

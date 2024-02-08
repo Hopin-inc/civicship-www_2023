@@ -76,21 +76,54 @@ dl.information-card-table {
   width: 100%;
 
   dt, dd {
-    @apply py-4 inline-flex;
+    @apply inline-flex;
 
-    &:not(:last-of-type) {
-      @apply border-b border-border;
+    @screen md {
+      @apply py-4;
     }
   }
 
   dt {
-    @apply pl-2 pr-4 items-center gap-1;
-    width: 120px;
+    @apply items-center gap-1;
+    width: 100%;
+
+    &:not(:first-of-type) {
+      @apply pt-4;
+    }
+
+    &:first-of-type {
+      @apply pt-2;
+    }
+
+    @screen md {
+      @apply pl-2 pr-4;
+      width: 120px;
+      &:not(:last-of-type) {
+        @apply border-b border-border;
+      }
+    }
   }
 
   dd {
-    @apply pr-2;
-    width: calc(100% - 120px);
+    @apply pt-2;
+    width: 100%;
+
+    &:not(:last-of-type) {
+      @apply pb-4 border-b border-border;
+    }
+
+    &:last-of-type {
+      @apply pt-2;
+    }
+
+    @screen md {
+      @apply pr-2 py-4;
+      width: calc(100% - 120px);
+
+      &:last-of-type {
+        @apply py-4;
+      }
+    }
   }
 }
 

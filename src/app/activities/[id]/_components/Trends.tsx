@@ -18,7 +18,7 @@ const Trends = ({ id, trends }: Props) => (
         <ArrowRightCircle size="16" className="ml-1"/>
       </Link>
     </div>
-    <ul className="mt-4 grid grid-cols-2 gap-4">
+    <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
       <li className="p-6 bg-white rounded-2xl">
         <h3 className="text-sm text-muted-foreground">活動曜日・時間帯</h3>
         <div className="mt-2">

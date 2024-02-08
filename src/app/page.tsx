@@ -9,7 +9,7 @@ import "@/app/page.scss";
 const Home = () => (
   <>
     <FirstView/>
-    <div className="flex flex-col w-full max-w-[960px] px-10 pb-20 gap-20 home">
+    <div className="flex flex-col w-full max-w-[960px] px-6 md:px-10 pb-20 gap-20 home">
       {/*<Now/>*/}
       <Organizations/>
       <Plans/>

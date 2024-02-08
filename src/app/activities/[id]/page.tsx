@@ -59,32 +59,43 @@ const ActivityDetail = async () => {
     return;
   }
 
+  const participants = associationInfo.engagement.participants;
+  const activityCount = records.length;
+  const activityHours = associationInfo.engagement.activityHour;
   return (
-    <div className="w-full max-w-[960px] px-10 pb-[160px]">
-      <Thumbnails thumbnails={ activity.thumbnails }/>
-      <div className="flex gap-8 items-start">
-        <div className="flex flex-col gap-16 flex-grow">
-          <Summary activity={ activity } isPlan={ isPlan }/>
-          <Organization association={ association }/>
-          { trends && <Trends id={ association.id } trends={ trends }/> }
-          <Records activities={ records } total={ totalRecords }/>
+    <>
+      <div className="w-full max-w-[960px] px-6 md:px-10 pb-12 md:pb-[160px]">
+        <Thumbnails thumbnails={ activity.thumbnails }/>
+        <div className="flex flex-col md:flex-row gap-8 items-start relative">
+          <div className="flex flex-col gap-16 flex-grow">
+            <Summary activity={ activity } isPlan={ isPlan }/>
+            <Organization association={ association } participants={ participants } activityCount={ activityCount }/>
+            { trends && <Trends id={ association.id } trends={ trends }/> }
+            <Records activities={ records } total={ totalRecords }/>
+          </div>
+          <section className="hidden md:inline-block min-w-[280px] w-[280px] sticky top-[120px]">
+            <Link href={ applyForm } target="_blank"
+                  className={ cn(buttonVariants({ size: "lg" }), "rounded-full w-full") }>
+              話を聞きたい
+              <ExternalLink size="16" className="ml-1"/>
+            </Link>
+            <RecordSummary participants={ participants } activityCount={ activityCount }
+                           activityHours={ activityHours }/>
+          </section>
         </div>
-        <aside className="min-w-[280px] w-[280px] sticky top-[120px]">
-          <Link href={ applyForm } target="_blank"
-                className={ cn(buttonVariants({ size: "lg" }), "rounded-full w-full") }>
-            話を聞きたい
-            <ExternalLink size="16" className="ml-1"/>
-          </Link>
-          <RecordSummary participants={ associationInfo.engagement.participants }
-                         activityCount={ records.length }
-                         activityHours={ associationInfo.engagement.activityHour }/>
-        </aside>
+        { plans.length > 0 && (
+          <Plans activities={ plans } total={ totalPlans } className="mt-20"/>
+        ) }
       </div>
-      { plans.length > 0 && (
-        <Plans activities={ plans } total={ totalPlans } className="mt-20"/>
-      ) }
-    </div>
-  )
+      <section className="md:hidden fixed bottom-0 w-full h-auto flex px-6 py-4 bg-white z-10">
+        <Link href={ applyForm } target="_blank"
+              className={ cn(buttonVariants({ size: "lg" }), "rounded-full w-full") }>
+          話を聞きたい
+          <ExternalLink size="16" className="ml-1"/>
+        </Link>
+      </section>
+    </>
+  );
 };
 
 export default ActivityDetail;

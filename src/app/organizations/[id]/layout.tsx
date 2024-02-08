@@ -40,12 +40,12 @@ const OrganizationLayout: React.FC<PropsWithChildren> = ({ children }) => {
   const id = locations[2];
   const tab = locations[3];
   return (
-    <div className="w-full max-w-[1160px] px-10 pt-[80px] pb-[160px] flex gap-10 items-start">
-      <aside className="min-w-[400px] w-[400px] sticky top-[120px]">
+    <div className="w-full md:max-w-[1160px] px-6 md:px-10 pt-6 md:pt-[80px] pb-12 md:pb-[160px] flex flex-col md:flex-row gap-10 items-start">
+      <aside className="w-full md:min-w-[400px] md:w-[400px] md:sticky top-[120px]">
         <OrganizationInfo id={ id }/>
       </aside>
-      <div className="flex flex-col gap-16 flex-grow">
-        <Tabs defaultValue={ tab } className="relative">
+      <div className="w-full flex flex-col gap-16 flex-grow">
+        <Tabs defaultValue={ tab } className="sticky md:relative">
           <TabsList className="gap-2">
             { tabs.map(({ value, label }, index) => (
               <Link href={ `./${ value }` } key={ index }>

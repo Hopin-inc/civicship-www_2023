@@ -12,7 +12,7 @@ const Organizations = async () => {
       <p className="mt-4">
         civicshipの目指すところに共感いただき、ご協力していただいているトライアルパートナーのご紹介です。
       </p>
-      <ul className="w-full mt-6 grid grid-cols-2 gap-6">
+      <ul className="w-full mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         { organizations.map(({ engagement, ...organization }, index) => {
           // const [hours, minutes] = convertH2HM(engagement.activityHour);
           return (

@@ -12,7 +12,7 @@ const OrganizationInfo = async ({ id }: Props) => {
   if (association) {
     // const [hours, minutes] = convertH2HM(association.engagement.activityHour);
     return (
-      <div className="w-full p-10 bg-white rounded-lg flex flex-col justify-start items-center">
+      <div className="w-full md:p-10 md:bg-white rounded-lg flex flex-col justify-start items-center">
         <div className="self-stretch h-[120px] bg-image-contain"
              style={ { backgroundImage: `url(${ association?.logo })` } }/>
         <div className="mt-4 self-start">
@@ -27,7 +27,7 @@ const OrganizationInfo = async ({ id }: Props) => {
             <p className="mt-2">{ association.description }</p>
           ) }
         </div>
-        <ul className="w-full mt-4 bg-white rounded-2xl flex flex-col gap-2">
+        <ul className="w-full mt-4 flex flex-col gap-2">
           <li className="self-stretch justify-between items-center inline-flex">
             <div className="justify-start items-center gap-2 flex">
               <User size="16"/>

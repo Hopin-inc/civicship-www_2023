@@ -25,7 +25,7 @@ const OrganizationDetailInfo = async () => {
   if (association && trends) {
     return (
       <div className="flex flex-col gap-16">
-        <section className="mt-4 px-6 py-4 bg-white rounded-2xl flex flex-col justify-start items-center">
+        <section className="px-6 py-4 bg-white rounded-2xl flex flex-col justify-start items-center">
           <dl className="information-card-table">
             <dt>
               <Tag size="16" className="text-muted-foreground"/>
@@ -85,7 +85,7 @@ const OrganizationDetailInfo = async () => {
             {/*  <ArrowRightCircle size="16" className="ml-1"/>*/ }
             {/*</Link>*/ }
           </div>
-          <ul className="mt-4 grid grid-cols-2 gap-4">
+          <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
             <li className="p-6 bg-white rounded-2xl">
               <h3 className="text-sm text-muted-foreground">活動曜日</h3>
               <div className="mt-2">

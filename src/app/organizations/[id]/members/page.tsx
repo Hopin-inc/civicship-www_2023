@@ -12,7 +12,7 @@ const OrganizationDetailMembers = async () => {
   const { members } = await getOrganizationMembers(id);
   return members.length
     ? (
-      <ul className="grid grid-cols-2 gap-6">
+      <ul className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
         { members.map((m, index) => {
           // const [hours, minutes] = convertH2HM(m.activityHours);
           return (
