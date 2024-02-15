@@ -34,6 +34,26 @@ export const getTotalHours = cache(async (): Promise<number | undefined> => {
   }
 });
 
+export const getTotalDays = cache(async (): Promise<number | undefined> => {
+  try {
+    const callable = httpsCallable<void, number>(functions, "web-getTotalDays");
+    const result = await callable();
+    if (PRINT_RESULT) {
+      console.log({
+        function: "getTotalDays",
+        params: undefined,
+        result: result.data,
+      });
+    }
+    return result.data;
+  } catch (e) {
+    console.error(e, {
+      function: "getTotalDays",
+      params: undefined,
+    });
+  }
+});
+
 export const getOrganizations = cache(async (): Promise<AssociationOverview[]> => {
   try {
     const callable = httpsCallable<void, AssociationOverview[]>(functions, "web-getOrganizations");

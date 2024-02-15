@@ -1,9 +1,10 @@
 import { ArrowRightCircle } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
-import { getTotalHours } from "@/api";
+import { getTotalDays } from "@/api";
 import { buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { contactForm } from "@/constants/url";
 import { displayNumber } from "@/lib/display";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +14,7 @@ const FirstView = () => (
       <h1 className="text-4xl text-center font-bold">あなたの活動が<br/>団体への応援を大きくする｡</h1>
       <p className="text-center">シビックシップは、ありたい社会に向かう市民活動を応援しています｡</p>
     </div>
-    <Link href="/#contact" className={ cn(buttonVariants({ size: "lg" }), "mt-6 rounded-full") }>
+    <Link href={ contactForm } target="_blank" className={ cn(buttonVariants({ size: "lg" }), "mt-6 rounded-full") }>
       <ArrowRightCircle className="mr-2"/>
       団体として利用を申請する
     </Link>
@@ -23,15 +24,15 @@ const FirstView = () => (
         <Suspense fallback={ <span><Skeleton className="w-16 h-10"/></span> }>
           <TotalHours/>
         </Suspense>
-        <p>時間</p>
+        <p>回</p>
       </div>
-      <p>のボランティアが生まれています｡</p>
+      <p>のボランティア活動が生まれています｡</p>
     </div>
   </section>
 );
 
 const TotalHours = async () => {
-  const total = await getTotalHours();
+  const total = await getTotalDays();
   if (total !== undefined) {
     return (
       <p className="text-5xl font-extrabold text-primary-gradient">{ displayNumber(total) }</p>

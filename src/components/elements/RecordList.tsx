@@ -5,9 +5,9 @@ import { MapPin, PlusCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
-import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../../../tailwind.config";
+// import { useMediaQuery } from "react-responsive";
+// import resolveConfig from "tailwindcss/resolveConfig";
+// import tailwindConfig from "../../../tailwind.config";
 import { Button } from "@/components/ui/button";
 import { convertDatetime } from "@/lib/date";
 import { cn } from "@/lib/utils";
@@ -29,11 +29,11 @@ const RecordList = ({ activities, className }: Props) => {
       setActivities(activities.slice(0, newLength));
     }
   };
-  const fullConfig = resolveConfig(tailwindConfig);
-  const breakpoints = fullConfig.theme?.screens;
-  // @ts-ignore
-  const isMobile = useMediaQuery({ query: `(min-width: ${ breakpoints ? breakpoints["md"] : 0 })` });
-  const iconSize = isMobile ? 80 : 40;
+  // const fullConfig = resolveConfig(tailwindConfig);
+  // const breakpoints = fullConfig.theme?.screens;
+  // // @ts-ignore
+  // const isMobile = useMediaQuery({ query: `(min-width: ${ breakpoints && breakpoints["md"] ? breakpoints["md"] : "768px" })` });
+  // const iconSize = isMobile ? 80 : 40;
   return (
     <div
       className={ cn(className, "w-full bg-white rounded-xl flex flex-col justify-start items-center overflow-clip") }>
@@ -50,7 +50,7 @@ const RecordList = ({ activities, className }: Props) => {
               key={ index }
             >
               <Link href={ `/activities/${ id }` }
-                    className="px-6 md:px-12 py-6 md:py-8 w-full flex flex-col justify-start items-start gap-4 md:gap-8 hover-link">
+                    className="px-6 md:px-12 py-6 md:py-8 w-full flex flex-col justify-start items-start gap-4 md:gap-6 hover-link">
                 <p className="text-xl font-semibold">{ convertDatetime(startsAt, endsAt) }</p>
                 <div className="self-stretch flex-col justify-start items-start gap-4 flex">
                   { participantAvatars.length > 0 && (
@@ -58,8 +58,8 @@ const RecordList = ({ activities, className }: Props) => {
                       <ul className="justify-start items-center flex ml-4">
                         { participantAvatars.map((avatar, idx) => (
                           <li key={ idx } className="-ml-4">
-                            <Image src={ avatar } alt="参加者" width={ iconSize } height={ iconSize }
-                                   className="rounded-full"/>
+                            <Image src={ avatar } alt="参加者" width="80" height="80"
+                                   className="rounded-full w-[40px] h-[40px] md:w-[64px] md:h-[64px]"/>
                           </li>
                         )) }
                       </ul>
