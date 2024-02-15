@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { contactForm } from "@/constants/url";
 import { cn } from "@/lib/utils";
 
 const Header: React.FC = () => {
@@ -22,7 +23,7 @@ const Header: React.FC = () => {
               <Link href="/#records" className={ buttonVariants({ variant: "link" }) }>これまでの活動</Link>
             </li>
           </ul>
-          <Link href="/#contact" className={ cn(buttonVariants({ size: "lg" }), "rounded-full") }>団体として利用を申請する</Link>
+          <Link href={ contactForm } target="_blank" className={ cn(buttonVariants({ size: "lg" }), "rounded-full") }>団体として利用を申請する</Link>
         </nav>
       </div>
     </header>
